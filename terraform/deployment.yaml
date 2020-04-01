@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-revolut
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-revolut
+    spec:
+      containers:
+        - name: hello-happy-birthday
+          image: 'gcr.io/hello-revolut/maven-jib-cloud-run:latest'
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-revolut
+  labels:
+    name: hello-revolut
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: hello-revolut
+  type: LoadBalancer
