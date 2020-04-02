@@ -19,22 +19,19 @@ public class PersonService {
         this.personDao = personDao;
     }
 
-    public List<Person> getAllPeople(){
-        return personDao.selectAllPeople();
+    public List<Person> getAllPeople() {
+        return personDao.getPeople();
     }
 
-    public Optional<Person> getPersonByUsername(String username){
-        return personDao.selectPersonByUsername(username);
+    public int insertPerson(String username, Person person) { return personDao.addPerson(username, person); }
+
+    public Optional<Person> getPerson(String username) {
+        return personDao.getPerson(username);
     }
 
-    public int deletePerson(String username){
-        return personDao.deletePersonByUsername(username);
+    public void deletePerson(String username) {
+        personDao.deletePerson(username);
     }
 
-    public int updatePerson(String username, Person newPerson){
-        if(!personDao.selectPersonByUsername(username).isEmpty())
-            return personDao.updatePersonByUsername(username, newPerson);
-        else
-            return personDao.insertPerson(username, newPerson);
-    }
+    public void updatePerson(String username, Person person) { personDao.updatePerson(username, person); }
 }

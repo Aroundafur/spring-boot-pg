@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -50,7 +48,11 @@ public class PersonController {
     @ResponseStatus( HttpStatus.NO_CONTENT )
     public void updatePerson(@PathVariable("username") String username, @Valid @RequestBody Person personToUpdate){
         if(checkStringForAllLetterUsingRegex(username) && (diff(personToUpdate.getDateOfBirth()) >= 0)) {
-            personService.updatePerson(username, personToUpdate);
+            if(getPeopleMap(personService.getAllPeople()).containsKey(username)){
+                personService.updatePerson(username, personToUpdate);
+            }else {
+                personService.insertPerson(username, personToUpdate);
+            }
         }
     }
 
@@ -58,10 +60,16 @@ public class PersonController {
     public ResponseEntity<Object> sayHello(@PathVariable("username") String username)
     {
         HashMap<String, String> map = new HashMap<>();
-        long diff = diff(personService.getPersonByUsername(username).get().getDateOfBirth());
-        map.put("messege", "Hello " + username + "! " + (diff == 0 ? "Happy birthday!" : "Your birthday is in " +
-                TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + " day(s)!" ));
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        Optional<Person> person = personService.getPerson(username);
+        if(getPeopleMap(personService.getAllPeople()).containsKey(username)){
+            long diff = diff(person.get().getDateOfBirth());
+            map.put("messege", "Hello " + username + "! " + (diff == 0 ? "Happy birthday!" : "Your birthday is in " +
+                    TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + " day(s)!"));
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+        }
     }
 
 
@@ -84,6 +92,14 @@ public class PersonController {
             e.printStackTrace();
         }
         return diff;
+    }
+
+    public Map<String, Person> getPeopleMap(List<Person> list) {
+        Map<String, Person> map = new HashMap<>();
+        for (Person person : list) {
+            map.put(person.getUsername(), person);
+        }
+        return map;
     }
 
 

@@ -1,7 +1,7 @@
-resource "google_container_cluster" "default" {
+resource "google_container_cluster" "gke-cluster" {
   name = var.app_project
   project = var.app_project
-  description = "Demo GKE Cluster"
+  description = "GKE Cluster"
   location = var.gcp_location
 
   remove_default_node_pool = true
@@ -17,11 +17,11 @@ resource "google_container_cluster" "default" {
   }
 }
 
-resource "google_container_node_pool" "default" {
+resource "google_container_node_pool" "extra-pool" {
   name = "${var.app_project}-node-pool"
   project = var.app_project
   location = var.gcp_location
-  cluster = google_container_cluster.default.name
+  cluster = google_container_cluster.gke-cluster.name
   node_count = 1
 
   node_config {

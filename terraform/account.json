@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hello-happy-birthday-273010",
+  "private_key_id": "f9f5972186f53dbd61faf6aff91448a1aa4aea61",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDUgmUb7LUBWblz\nSFh71vwWwmbVFN4TZikAGInfp8HiZxSO1/y2fbh2bSaWibDWdEXIKWYlCsA9uk4g\nVsd8iRyKwsRlyIiATqIPVHqZB3etJDbHudptrNb1jdXMc1urmBlZ8jow+U6/nR3k\niw6+Vg6pmXdhyShT0REylZbXPbBX9qk+pnmU+1eGI0sviQFH/wjPmekgWPGPNSJS\ny5MITEiM/R4X0j3HRAl2MaC1+G+Ubg8pEPlTdVb3hgEKcGn5YjPKB2Ypr/KSv81m\nYFwZbi8Ip2W90iqytmj++Xw7kNWph7FyO8UncTOR7D7NclHeOa4/tEJuCl9fQDvV\nRmqVnXNFAgMBAAECggEABMQuRt+lWVP9G2y/DqYDg5zVcsgz8+zvFKa4Pu6JDs4q\nO/WfCtZ2iEd0nbHrErWgaWJ4/UczXnRliLGm6fA8VjtomBzU55smj4qg8Po7JlnB\nKx52xk4hsyJng3Kp7BxuTcy88+NqRKoeOnBJAslfglEkHZVwr10+0hWLViVher44\ndfuSOZ4V3TYfsGBS8LCiGwNfxD8OvuRdkyBhmlBOvGHBhj/vzVSvzH0HqcoScFTi\n0ow/1/tWC3fKPaXX2fr8maCnrnrvK3LG+yRCqD03BTc+1/n1URs6AE4sZv5wtGYg\nISdoPTnBh0Vwoodoj++LvJNXIYls8S/WRPHTF3RNyQKBgQD/nXHMKuaxkuRJUlDf\nfat9pzju1CpKADM1WdoKF3+6jS0rirq3TX/z5C47Bx+JFtc0ZAs1J5B1E06a+X8J\nZmM9Q/jVYQgQ4bYcEBklbfOenmS/pzOSoSbRch/yrt5NgndAHecG4xpxN4XjJdHz\nAPvyPVzPlJuW6PtdPacAaTzabQKBgQDU1FSdL0baWXrZMqgiT3VhczaBsz4kQEhV\n4Dwqd/oacMGUw+ae+JXHXwsbO3RilN69ubux35wjGtRlbIWLKGyJ8b6ha+kBc9vq\nY23AmrHUP23JVN9b/KALvPIHUloyyM0JungdwXzmQRgaq2+XCxWW8zhIGZ19kX2q\n62CJbhF1OQKBgQCgSZJ6fMx8vaf5cmzUOHG5MYs5+EEsdkOmSNm5SlMGIFEa5LuB\nBlAeGBAFY8oapP/+El4UzuJ/B8Ra2ekXc+T3HhCDfX0ZWPBhWJbsKa6C4MA8jhSA\n9hzpaa8u9wjfgdhVlGqynuaN6EtEzQqCXzOeC2yPnpiSYTZ+mZKHZ3aJYQKBgAcr\noC4riZeRrDHlIwUE6E+AMjXsdAuEnutFwsEriaGaaus4Lmzssx8kdJtWRXWMznRV\n7Zzwi7IjFUTVgypNElsTafjGSfNik+Yxs2Dp1VPxTyGZWm0e9cVveDgG7kMHwOCz\nB5j5C9w2FTnQzNGp7fBIAX1sX4H7hOBdTcNTkgMBAoGAQerGMXKZMo/VCopzhW34\nX2aa5atb/2n3b+JuVr0CsgQ52MYs5TGGiyvvLdjFS0nxb4hmuFoahf+6vcdXAaTI\nDaroxQvglzybErkrbGCeuf41iz1LjrMpKXq2/nHJs4Vl/3G4Uxb4T7z2bUkpCdzE\nAzXzyBogE8eUj5oSoPlxNRM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "terraform@hello-happy-birthday-273010.iam.gserviceaccount.com",
+  "client_id": "110441126961220401308",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform%40hello-happy-birthday-273010.iam.gserviceaccount.com"
+}

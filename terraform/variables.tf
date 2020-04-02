@@ -32,3 +32,9 @@ variable "machine_type" {
   type = string
   description = "GCP machine type"
 }
+
+# define Public subnet
+variable "public_subnet_cidr_1" {
+  type = string
+  description = "Public subnet CIDR 1"
+}

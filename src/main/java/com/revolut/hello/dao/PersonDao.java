@@ -1,20 +1,21 @@
 package com.revolut.hello.dao;
 
+
 import com.revolut.hello.model.Person;
 
 import java.util.List;
 import java.util.Optional;
 
-
 public interface PersonDao {
 
-    int insertPerson(String username, Person person);
+    int addPerson(String username, Person person);
 
-    List<Person> selectAllPeople();
+    List<Person> getPeople();
 
-    Optional<Person> selectPersonByUsername(String username);
+    Optional<Person> getPerson(String username);
 
-    int deletePersonByUsername(String username);
+    int deletePerson(String username);
 
-    int updatePersonByUsername(String username, Person person);
+    int updatePerson(String username, Person person);
+
 }
