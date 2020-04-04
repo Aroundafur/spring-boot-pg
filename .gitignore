@@ -31,4 +31,5 @@ build/
 .vscode/
 terraform/.terraform
 terraform/*.json
+terraform/secrets.yaml
 terraform.*
