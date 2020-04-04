@@ -45,15 +45,17 @@ public class PersonController {
     }
 
     @PutMapping(path = "{username}")
-    @ResponseStatus( HttpStatus.NO_CONTENT )
-    public void updatePerson(@PathVariable("username") String username, @Valid @RequestBody Person personToUpdate){
+    public ResponseEntity<Object>  updatePerson(@PathVariable("username") String username, @Valid @RequestBody Person personToUpdate){
+        HashMap<String, String> map = new HashMap<>();
         if(checkStringForAllLetterUsingRegex(username) && (diff(personToUpdate.getDateOfBirth()) >= 0)) {
             if(getPeopleMap(personService.getAllPeople()).containsKey(username)){
                 personService.updatePerson(username, personToUpdate);
             }else {
                 personService.insertPerson(username, personToUpdate);
             }
+            return new ResponseEntity<>(map, HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping(path = "{username}", produces= MediaType.APPLICATION_JSON_VALUE)
@@ -79,12 +81,17 @@ public class PersonController {
     }
 
     private long diff(String date){
+        Calendar cal = Calendar.getInstance();
+        String currentYear = String.valueOf(cal.get(Calendar.YEAR));
+        String delimiter = "-";
+        String bDate[] = date.split(delimiter,3);
+        bDate[0] = currentYear;
         String fmt = "yyyy-MM-dd";
         SimpleDateFormat myFormat = new SimpleDateFormat(fmt);
         String today = myFormat.format(new Date());
         long diff = 0;
         try {
-            Date date1 = myFormat.parse(date);
+            Date date1 = myFormat.parse(bDate[0] + "-" + bDate[1] + "-" + bDate[2]);
             Date date2 = myFormat.parse(today);
             diff = date1.getTime() - date2.getTime();
 

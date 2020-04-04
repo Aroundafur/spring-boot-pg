@@ -1,32 +1,47 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-revolut
+  name: hello-happy-birthday
+  labels:
+    app: hello-happy-birthday
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: hello-revolut
+        app: hello-happy-birthday
     spec:
       containers:
         - name: hello-happy-birthday
-          image: 'gcr.io/hello-revolut/maven-jib-cloud-run:latest'
+          image: 'docker.io/dozza/spring-boot-pg:latest'
           ports:
             - containerPort: 8080
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-revolut
-  labels:
-    name: hello-revolut
-spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
-      protocol: TCP
-  selector:
-    app: hello-revolut
-  type: LoadBalancer
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: csql-secrets
+                  key: username
+            - name: DB_PASS
+              valueFrom:
+                  secretKeyRef:
+                    name: csql-secrets
+                    key: password
+            - name: DB_NAME
+              valueFrom:
+                  secretKeyRef:
+                    name: csql-secrets
+                    key: dbname
+        - name: cloud-sql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy
+          command: ["/cloud-sql-proxy",
+                    "-instances==tcp:5432",
+                    "-credentials_file=/secrets/cloudsql/account.json"]
+          volumeMounts:
+            - name: my-secrets-volume
+              mountPath: /secrets/cloudsql
+              readOnly: true
+    volumes:
+      - name: my-secrets-volume
+        secret:
+          secretName: cloudsql-instance-credentials

@@ -34,7 +34,7 @@ variable db_instance_access_cidr {
 # database settings
 variable db_name {
   description = "Name of the default database to create"
-  default = "peole"
+  default = "demodb"
 }
 variable db_charset {
   description = "The charset for the default database"
@@ -49,11 +49,14 @@ variable db_user_name {
   description = "The name of the default user"
   default = "postgres"
 }
-variable db_user_host {
-  description = "The host for the default user"
-  default = "%"
-}
+
 variable db_user_password {
   description = "The password for the default user. If not set, a random one will be generated and available in the generated_user_password output variable."
   default = "password"
+}
+
+# user settings
+variable sqlproxy_user_name {
+  description = "The name of the sqlproxy user"
+  default = "sqlproxy"
 }

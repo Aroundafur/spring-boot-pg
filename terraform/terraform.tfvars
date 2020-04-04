@@ -1,9 +1,0 @@
-# GCP Settings
-gcp_location = "europe-west2"
-gcp_zone = "europe-west2-a"
-gcp_auth_file = "account.json"
-app_project = "hello-happy-birthday-273010"
-initial_node_count = 3
-machine_type = "n1-standard-1"
-# GCP Netwok
-public_subnet_cidr_1  = "10.10.1.0/24"
