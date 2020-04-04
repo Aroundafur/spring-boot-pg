@@ -2,7 +2,7 @@ resource "google_container_cluster" "gke-cluster" {
   name = var.app_project
   project = var.app_project
   description = "GKE Cluster"
-  location = "europe-west1-b"
+  location = "${var.gcp_location}-b"
   network = google_compute_network.private_network.name
   remove_default_node_pool = true
   initial_node_count = var.initial_node_count
@@ -20,7 +20,7 @@ resource "google_container_cluster" "gke-cluster" {
 resource "google_container_node_pool" "extra-pool" {
   name = "${var.app_project}-node-pool"
   project = var.app_project
-  location = "europe-west1-b"
+  location = "${var.gcp_location}-b"
   cluster = google_container_cluster.gke-cluster.name
   initial_node_count = var.initial_node_count
 
